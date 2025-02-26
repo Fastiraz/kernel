@@ -7,6 +7,11 @@ section .text
 _start:
   mov si, xcat
 
+  ; colors
+  mov al, 0x10 ; https://mendelson.org/wpdos/videomodes.txt
+  mov ah, 0x00
+  int 0x10
+
 print_loop:
   mov al, [si]
   inc si
@@ -19,7 +24,7 @@ print_loop:
   mov ah, 0xE
   ; mov al, [xcat]
   mov bh, 0
-  mov bl, 0xD ; https://en.wikipedia.org/wiki/BIOS_color_attributes
+  mov bl, 0xC ; https://en.wikipedia.org/wiki/BIOS_color_attributes
   int 0x10
 
   jmp print_loop
